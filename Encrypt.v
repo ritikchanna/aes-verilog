@@ -283,41 +283,36 @@ begin
 end
 endfunction //SubBytes 
 	
-
-module ShiftRow (data_in, data_out); 
- 
-parameter	AES_length = 128; 
- 
-input	[AES_length-1:0] data_in; 
-output	[AES_length-1:0] data_out; 
+function [127:0] ShiftRow(input [127:0] data_in);
+begin
  
 wire	[7:0] 	is00,is01,is02,is03, 
-				is10,is11,is12,is13, 
-				is20,is21,is22,is23, 
-				is30,is31,is32,is33; 
+		is10,is11,is12,is13, 
+		is20,is21,is22,is23, 
+		is30,is31,is32,is33; 
  
  
 wire	[7:0] 	os00,os01,os02,os03, 
-				os10,os11,os12,os13, 
-				os20,os21,os22,os23, 
-				os30,os31,os32,os33; 
+		os10,os11,os12,os13, 
+		os20,os21,os22,os23, 
+		os30,os31,os32,os33; 
  
 assign	{	os00,os01,os02,os03, os10,os11,os12,os13, 
-    			os20,os21,os22,os23, os30,os31,os32,os33	} 
+    		os20,os21,os22,os23, os30,os31,os32,os33	} 
 				
 			= {	is00,is01,is02,is03,is11,is12,is13,is10, 
-					is22,is23,is20,is21,is33,is30,is31,is32 }; 
+				is22,is23,is20,is21,is33,is30,is31,is32 }; 
  
 assign	{	is33,is23,is13,is03, 
-			is32,is22,is12,is02, 
-			is31,is21,is11,is01, 
-			is30,is20,is10,is00	} = data_in; 
+		is32,is22,is12,is02, 
+		is31,is21,is11,is01, 
+		is30,is20,is10,is00	} = data_in; 
 			 
-assign	data_out = {	os33,os23,os13,os03, 
-						os32,os22,os12,os02, 
-						os31,os21,os11,os01, 
-						os30,os20,os10,os00	}; 
-endmodule 
+assign	ShiftRow = {	os33,os23,os13,os03, 
+			os32,os22,os12,os02, 
+			os31,os21,os11,os01, 
+			os30,os20,os10,os00	}; 
+endfunction
 
 always @*
 begin
