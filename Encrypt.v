@@ -314,7 +314,7 @@ assign	ShiftRow = {	os33,os23,os13,os03,
 			os30,os20,os10,os00	}; 
 endfunction
 	
-	function [7:0] m2; // binary multiplication with 2
+function [7:0] m2; // binary multiplication with 2
 	input [7:0] x;
 		begin
 			m2={x[6:0],1'b0} ^ (8'h1b & {8{x[7]}}); // 1bit left shift then conditional check if 1st bit is 1 then add 00011011 with shifted number {x[6:0];1'b0} 
@@ -345,7 +345,7 @@ function [31:0] mul_32bit;
 		end 
 endfunction
 
-function [127:0] matrix_mul;
+function [127:0] mixcolumn;
 	input [127:0] matrix;
 	reg [31:0] c0,c1,c2,c3;
 	reg [31:0] mc0,mc1,mc2,mc3;
@@ -360,9 +360,9 @@ function [127:0] matrix_mul;
 			mc2=mul_32bit(c2);
 			mc3=mul_32bit(c3);
 			
-			matrix_mul={mc0,mc1,mc2,mc3};
+			mixcolumn={mc0,mc1,mc2,mc3};
 		end
-endfunction
+endfunction //mixcolumn
 
 	
 
