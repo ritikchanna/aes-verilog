@@ -12,6 +12,7 @@ integer i;
 //Adds current RoundKey to the state					
 function [127:0] AddRoundKey(input [127:0] State,input [127:0] RoundKey);
 begin
+$display("AddRoundKey");
 AddRoundKey = State ^ RoundKey;
 end
 endfunction //AddRoundKey
@@ -19,7 +20,7 @@ endfunction //AddRoundKey
 //Substitute Bytes in State from SBox
 function [127:0] SubBytes(input [127:0] State);
 begin
-	
+	$display("SubBytes");
 	sbox[8'h00] = 8'h63;
     sbox[8'h01] = 8'h7c;
     sbox[8'h02] = 8'h77;
@@ -283,36 +284,25 @@ begin
 end
 endfunction //SubBytes 
 	
-function [127:0] ShiftRow(input [127:0] data_in);
-begin
- 
-wire	[7:0] 	is00,is01,is02,is03, 
-		is10,is11,is12,is13, 
-		is20,is21,is22,is23, 
-		is30,is31,is32,is33; 
- 
- 
-wire	[7:0] 	os00,os01,os02,os03, 
-		os10,os11,os12,os13, 
-		os20,os21,os22,os23, 
-		os30,os31,os32,os33; 
- 
-assign	{	os00,os01,os02,os03, os10,os11,os12,os13, 
-    		os20,os21,os22,os23, os30,os31,os32,os33	} 
-				
-			= {	is00,is01,is02,is03,is11,is12,is13,is10, 
-				is22,is23,is20,is21,is33,is30,is31,is32 }; 
- 
-assign	{	is33,is23,is13,is03, 
-		is32,is22,is12,is02, 
-		is31,is21,is11,is01, 
-		is30,is20,is10,is00	} = data_in; 
-			 
-assign	ShiftRow = {	os33,os23,os13,os03, 
-			os32,os22,os12,os02, 
-			os31,os21,os11,os01, 
-			os30,os20,os10,os00	}; 
-endfunction
+ function [127 : 0] ShiftRow(input [127 : 0] data);
+	 reg [31 : 0] w0, w1, w2, w3;
+    reg [31 : 0] ws0, ws1, ws2, ws3;
+    begin
+	  $display("ShiftRow");
+      w0 = data[127 : 096];
+      w1 = data[095 : 064];
+      w2 = data[063 : 032];
+      w3 = data[031 : 000];
+
+      ws0 = {w0[31 : 24], w1[23 : 16], w2[15 : 08], w3[07 : 00]};
+      ws1 = {w1[31 : 24], w2[23 : 16], w3[15 : 08], w0[07 : 00]};
+      ws2 = {w2[31 : 24], w3[23 : 16], w0[15 : 08], w1[07 : 00]};
+      ws3 = {w3[31 : 24], w0[23 : 16], w1[15 : 08], w2[07 : 00]};
+
+      ShiftRow = {ws0, ws1, ws2, ws3};
+    end
+  endfunction // ShiftRow
+
 	
 function [7:0] m2; // binary multiplication with 2
 	input [7:0] x;
@@ -350,6 +340,7 @@ function [127:0] mixcolumn;
 	reg [31:0] c0,c1,c2,c3;
 	reg [31:0] mc0,mc1,mc2,mc3;
 		begin
+		$display("mixcolumn");
 			c0=matrix[127:96];
 			c1=matrix[95:64];
 			c2=matrix[63:32];
@@ -365,13 +356,77 @@ function [127:0] mixcolumn;
 endfunction //mixcolumn
 
 	
+localparam ROUND_NO = 4'd0;
+localparam NO_UPDATE    = 3'h0;
+localparam INIT_UPDATE  = 3'h1;
+localparam MAIN_UPDATE  = 3'h2;
+localparam FINAL_UPDATE = 3'h3;
+//TODO change according to logic
+reg [2 : 0]  update_type = INIT_UPDATE;
+reg [2 : 0] counter;
+reg ready = 1'h1;
 
-always @*
-begin
-$display("Ritik");
-//Result = AddRoundKey(Block,Key);
-Result = SubBytes(Block);
-end
+ //----------------------------------------------------------------
+  // round_logic
+  //
+  // The logic needed to implement init, main and final rounds.
+  //----------------------------------------------------------------
+  always @*
+    begin : round_logic
+	 
+	 //todo make these variables global ?
+	reg [127 : 0] block_old, block_new, key_old, key_new, temp;
+	//ready_flag,counter,
+	$display("@*");	
+		
+      case (update_type)
+        INIT_UPDATE:
+          begin
+			 $display("INIT_UPDATE");
+				ready = 1'h0;
+            block_old = Block;
+				key_old = Key;
+				block_new = AddRoundKey(block_old,key_old);
+				//TODO key new from routine
+				key_new = Key;
+				counter = 3'h0;
+				update_type = MAIN_UPDATE;
+				ready = 1'h1;
+          end
+        MAIN_UPDATE:
+          begin
+			  $display("MAIN_UPDATE");
+			 temp = SubBytes(block_new);
+			 temp = ShiftRow(temp);
+			 temp = mixcolumn(temp);
+			 //TODO addroundkey
+          block_old = block_new;
+			 block_new = temp;
+			 //todo increment counter
+          //if(counter >= 11)
+			update_type = FINAL_UPDATE;
+			 end
+
+        FINAL_UPDATE:
+          begin
+			 $display("FINAL_UPDATE");
+			ready = 1'h0;
+          temp = SubBytes(block_new);
+			 temp = ShiftRow(temp);
+			 //TODO addroundkey
+			 block_old = block_new;
+			 block_new = temp;
+			 Result = block_new;
+			 update_type = NO_UPDATE;
+			 ready = 1'h1;
+          end
+
+        default:
+          begin
+          end
+      endcase // case (update_type)
+    end // round_logic
+
 
 
 endmodule
