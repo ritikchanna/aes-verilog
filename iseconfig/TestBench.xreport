@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-02-03T20:54:05</DateModified>
+  <DateModified>2018-03-24T08:58:17</DateModified>
   <ModuleName>TestBench</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/superuser/Workspace/Verilog/AES/AES/iseconfig/TestBench.xreport</SavedFilePath>
