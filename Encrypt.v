@@ -1,13 +1,14 @@
 `timescale 1ns / 1ps
 module Encrypt(input wire [127:0] Block,
 					input wire [127:0] Key,
-					input wire clk,
-					input wire reset,
+					input wire next,
+					output reg ready,
 					output reg [127:0] Result
 					);
 
 
 reg [7 : 0] sbox [0 : 255];
+
 integer i;
 //Adds current RoundKey to the state					
 function [127:0] AddRoundKey(input [127:0] State,input [127:0] RoundKey);
@@ -394,7 +395,7 @@ localparam FINAL_UPDATE = 3'h3;
 //TODO change according to logic
 reg [2 : 0]  update_type = INIT_UPDATE;
 reg [2 : 0] counter;
-reg ready = 1'h1;
+
 
  //----------------------------------------------------------------
   // round_logic
@@ -419,22 +420,28 @@ reg ready = 1'h1;
 				block_new = AddRoundKey(block_old,key_old);
 				//TODO key new from routine
 				key_new = Key;
-				counter = 3'h0;
+				counter = 3'h1;
 				update_type = MAIN_UPDATE;
-				ready = 1'h1;
+				ready = 1'h1;				
           end
         MAIN_UPDATE:
           begin
-			  $display("MAIN_UPDATE");
-			 temp = SubBytes(block_new);
-			 temp = ShiftRow(temp);
-			 temp = mixcolumn(temp);
+			  $display("MAIN_UPDATE %h",counter);
+			  ready = 1'h0;
+			
+			
+			 temp <= SubBytes(block_new);
+			 temp <= ShiftRow(temp);
+			 temp <= mixcolumn(temp);
 			 //TODO addroundkey
-          block_old = block_new;
-			 block_new = temp;
+          block_old <= block_new;
+			 block_new <= temp;
 			 //todo increment counter
           //if(counter >= 11)
-			update_type = FINAL_UPDATE;
+			 counter <= counter +1;
+			 if(counter == 3'h3)
+			update_type <= FINAL_UPDATE;
+			ready = 1'h1;
 			 end
 
         FINAL_UPDATE:
@@ -448,13 +455,14 @@ reg ready = 1'h1;
 			 block_new = temp;
 			 Result = block_new;
 			 update_type = NO_UPDATE;
-			 ready = 1'h1;
+			ready = 1'h1;
           end
 
         default:
           begin
           end
       endcase // case (update_type)
+		
     end // round_logic
 
 

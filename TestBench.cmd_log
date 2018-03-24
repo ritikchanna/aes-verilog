@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/superuser/Workspace/Verilog/AES/AES/TestBench.xst" -ofn "/home/superuser/Workspace/Verilog/AES/AES/TestBench.syr" 
