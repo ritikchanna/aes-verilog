@@ -308,8 +308,8 @@ endfunction //SubBytes
 function [7:0] m2; // binary multiplication with 2
 	input [7:0] x;
 		begin
-			m2={x[6:0],1'b0} ^ (8'h1b & {8{x[7]}}); // 1bit left shift then conditional check if 1st bit 
-			//is 1 then add 00011011 with shifted number {x[6:0];1'b0} 
+			m2={x[6:0],1'b0} ^ (8'h1b & {8{x[7]}}); 
+			// 1bit left shift then conditional check if 1st bit is 1 then add 00011011 with shifted number
 		end
 endfunction
 function [7:0] m3;
@@ -357,7 +357,7 @@ function [127:0] mixcolumn;
 		end
 endfunction //mixcolumn
 
-function [127:0] aes_key_expand(input [127:0] key, input [0:3] round_no);
+function [127:0] aes_key(input [127:0] key, input [0:3] round_no);
 reg [127 : 0] sub_key;
 reg [31:0] temp [0:3];
 reg [7:0] RCON[1:10];
@@ -377,7 +377,7 @@ temp[0] = key[127:96]^ RotWord(sub_key[31:0]) ^ {RCON[round_no],24'h00};
 temp[1] = key[95:64] ^ temp[0];
 temp[2] = key[63:32] ^ temp[1];
 temp[3] = key[31:0] ^ temp[2];
-aes_key_expand = {temp[0], temp[1], temp[2], temp[3]};
+aes_key = {temp[0], temp[1], temp[2], temp[3]};
 end
 endfunction //aes_key_expand
 
