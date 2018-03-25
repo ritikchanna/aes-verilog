@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Sat Mar 24 13:42:32 2018">
+  <application stringID="Xst" timeStamp="Sun Mar 25 23:31:48 2018">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -45,7 +45,7 @@
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i3-5005U CPU @ 2.00GHz"/>
-          <item stringID="speed" value="1295.764 MHz"/>
+          <item stringID="speed" value="1399.424 MHz"/>
         </row>
       </table>
     </section>
@@ -106,19 +106,15 @@
       <item DEFAULT="0%" label="-slice_utilization_ratio_maxmargin" stringID="XST_SLICEUTILIZATIONRATIOMAXMARGIN" value="5"/>
     </section>
     <section stringID="XST_HDL_SYNTHESIS_REPORT">
-      <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1">
-        <item dataType="int" stringID="XST_3BIT_ADDER" value="1"/>
-      </item>
-      <item dataType="int" stringID="XST_XORS" value="65">
-        <item dataType="int" stringID="XST_1BIT_XOR2" value="48"/>
+      <item dataType="int" stringID="XST_ROMS" value="200"></item>
+      <item dataType="int" stringID="XST_XORS" value="937">
+        <item dataType="int" stringID="XST_1BIT_XOR2" value="752"/>
       </item>
     </section>
     <section stringID="XST_ADVANCED_HDL_SYNTHESIS_REPORT">
-      <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1">
-        <item dataType="int" stringID="XST_3BIT_ADDER" value="1"/>
-      </item>
-      <item dataType="int" stringID="XST_XORS" value="65">
-        <item dataType="int" stringID="XST_1BIT_XOR2" value="48"/>
+      <item dataType="int" stringID="XST_ROMS" value="200"></item>
+      <item dataType="int" stringID="XST_XORS" value="937">
+        <item dataType="int" stringID="XST_1BIT_XOR2" value="752"/>
       </item>
     </section>
     <section stringID="XST_FINAL_REGISTER_REPORTFOUND_NO_MACRO"/>
@@ -136,14 +132,14 @@
         <item stringID="XST_KEEP_HIERARCHY" value="No"/>
       </section>
       <section stringID="XST_DESIGN_STATISTICS">
-        <item stringID="XST_IOS" value="19"/>
+        <item stringID="XST_IOS" value="1"/>
       </section>
       <section stringID="XST_CELL_USAGE"/>
     </section>
     <section stringID="XST_DEVICE_UTILIZATION_SUMMARY">
       <item stringID="XST_SELECTED_DEVICE" value="3s400pq208-4"/>
       <item AVAILABLE="3584" dataType="int" label="Number of Slices" stringID="XST_NUMBER_OF_SLICES" value="0"/>
-      <item dataType="int" label="Number of IOs" stringID="XST_NUMBER_OF_IOS" value="19"/>
+      <item dataType="int" label="Number of IOs" stringID="XST_NUMBER_OF_IOS" value="1"/>
       <item AVAILABLE="141" dataType="int" label="Number of bonded IOBs" stringID="XST_NUMBER_OF_BONDED_IOBS" value="0"/>
     </section>
     <section stringID="XST_PARTITION_RESOURCE_SUMMARY">
@@ -151,8 +147,8 @@
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="0"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="675"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="6"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="66"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
     </section>
   </application>
 

@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Node::  Sat Mar 24 13:43:45 2018
+Node::  Sun Mar 25 23:33:56 2018
 
 par -w -intstyle ise -ol high -t 1 TestBench_map.ncd TestBench.ncd
 TestBench.pcf 
@@ -38,7 +38,7 @@ Router effort level (-rl):    High
 Starting initial Timing Analysis.  REAL time: 1 secs 
 Finished initial Timing Analysis.  REAL time: 1 secs 
 
-WARNING:Par:288 - The signal KeyArray<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal one_bit_IBUF has no load.  PAR will not attempt to route this signal.
 
 Starting Placer
 Total REAL time at the beginning of Placer: 1 secs 
@@ -80,11 +80,11 @@ Writing design to file TestBench.ncd
 Starting Router
 
 
-Phase  1  : 0 unrouted;      REAL time: 3 secs 
+Phase  1  : 0 unrouted;      REAL time: 2 secs 
 
-Phase  2  : 0 unrouted;      REAL time: 3 secs 
+Phase  2  : 0 unrouted;      REAL time: 2 secs 
 
-Phase  3  : 0 unrouted;      REAL time: 3 secs 
+Phase  3  : 0 unrouted;      REAL time: 2 secs 
 
 Phase  4  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
 
@@ -120,7 +120,7 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 1 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 4 secs 
+Total REAL time to PAR completion: 3 secs 
 Total CPU time to PAR completion: 2 secs 
 
 Peak Memory Usage:  537 MB

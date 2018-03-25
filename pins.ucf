@@ -1,1 +1,1 @@
-NET KeyArray<0> LOC = P42;
+NET one_bit LOC = P42;

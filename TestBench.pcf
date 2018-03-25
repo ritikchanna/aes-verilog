@@ -1,8 +1,8 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat Mar 24 13:43:41 2018
+// Written by: Map P.20131013 on Sun Mar 25 23:33:52 2018
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "KeyArray<0>" LOCATE = SITE "P42" LEVEL 1;
+COMP "one_bit" LOCATE = SITE "P42" LEVEL 1;
 SCHEMATIC END;
 

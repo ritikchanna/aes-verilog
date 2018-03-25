@@ -9,7 +9,7 @@ Target Device  : xc3s400
 Target Package : pq208
 Target Speed   : -4
 Mapper Version : spartan3 -- $Revision: 1.55 $
-Mapped Date    : Sat Mar 24 13:43:39 2018
+Mapped Date    : Sun Mar 25 23:33:49 2018
 
 Design Summary
 --------------
@@ -25,7 +25,7 @@ Logic Distribution:
 Average Fanout of Non-Clock Nets:                0.00
 
 Peak Memory Usage:  548 MB
-Total REAL time to MAP completion:  2 secs 
+Total REAL time to MAP completion:  3 secs 
 Total CPU time to MAP completion:   2 secs 
 
 NOTES:
@@ -70,15 +70,7 @@ Section 2 - Warnings
 
 Section 3 - Informational
 -------------------------
-INFO:LIT:243 - Logical network led has no load.
-INFO:LIT:395 - The above info message is repeated 18 more times for the
-   following (max. 5 shown):
-   lcd<9>,
-   lcd<8>,
-   lcd<7>,
-   lcd<6>,
-   lcd<5>
-   To see the details of these info messages, please use the -detail switch.
+INFO:LIT:243 - Logical network one_bit_IBUF has no load.
 INFO:MapLib:562 - No environment variables are currently set.
 
 Section 4 - Removed Logic Summary
@@ -94,7 +86,7 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| KeyArray<0>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| one_bit                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs

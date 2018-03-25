@@ -1,8 +1,6 @@
 `timescale 1ns / 1ps
 module Encrypt(input wire [127:0] Block,
 					input wire [127:0] Key,
-					input wire next,
-					output reg ready,
 					output reg [127:0] Result
 					);
 					
@@ -362,17 +360,18 @@ reg [127 : 0] sub_key;
 reg [31:0] temp [0:3];
 reg [7:0] RCON[1:10];
 begin
-$display("aes_key key=%h round=%h",key,round_no);
+
 RCON[1]=8'h01;
 RCON[2]=8'h02;
 RCON[3]=8'h04;
 RCON[4]=8'h08;
-RCON[4]=8'h10;
-RCON[5]=8'h20;
-RCON[6]=8'h40;
-RCON[7]=8'h80;
-RCON[8]=8'h1b;
-RCON[9]=8'h36;
+RCON[5]=8'h10;
+RCON[6]=8'h20;
+RCON[7]=8'h40;
+RCON[8]=8'h80;
+RCON[9]=8'h1b;
+RCON[10]=8'h36;
+$display("aes_key key=%h round=%h RCON=%h",key,round_no,RCON[round_no]);
 sub_key = SubBytes(key);
 temp[0] = key[127:96]^ RotWord(sub_key[31:0]) ^ {RCON[round_no],24'h0};
 temp[1] = key[95:64] ^ temp[0];
@@ -389,81 +388,49 @@ end
 endfunction //RotWord
 	
 localparam ROUND_NO = 4'd0;
-localparam NO_UPDATE    = 3'h0;
-localparam INIT_UPDATE  = 3'h1;
-localparam MAIN_UPDATE  = 3'h2;
-localparam FINAL_UPDATE = 3'h3;
-//TODO change according to logic
-reg [2 : 0]  update_type = INIT_UPDATE;
-reg [2 : 0] counter;
-
+integer n;
 
  //----------------------------------------------------------------
   // round_logic
   //
   // The logic needed to implement init, main and final rounds.
   //----------------------------------------------------------------
-always @(next)
+always @*
     begin : round_logic
 	 //todo make these variables global ?
 	reg [127 : 0] block_old, block_new, key_old, key_new, temp;
 	//ready_flag,counter,
 	$display("@*");
  $display("Block is %h",Block);	
-      case (update_type)
-        INIT_UPDATE:
-          begin
 			 $display("INIT_UPDATE");
-				ready = 1'h0;
             block_old = Block;
-				$display("block_old %h",block_old);
 				key_old = Key;
 				key_new = Key;
 				block_new = AddRoundKey(block_old,key_old);
-				//key_new = Key;
-				counter = 3'h1;
-				update_type = MAIN_UPDATE;
-				ready = 1'h1;	
 				$display("State after INIT_UPDATE is %h",block_new);				
-          end
-        MAIN_UPDATE:
-          begin
-			  $display("MAIN_UPDATE %h",counter);
-			  ready = 1'h0;
+     
+				for(n=1;n<=9;n=n+1)
+				begin
+			  $display("MAIN_UPDATE %h",n);
 			 temp = SubBytes(block_new);
 			 temp = ShiftRow(temp);
 			 temp = mixcolumn(temp);
 			 key_old = key_new;
-			 key_new = aes_key(key_old,counter);
+			 key_new = aes_key(key_old,n);
 			 temp = AddRoundKey(temp,key_new);
           block_old = block_new;
 			 block_new = temp;
-			 counter = counter +1;
-			if(counter == 3'h3)
-			update_type = FINAL_UPDATE;
-			$display("MAIN_UPDATE end %h",ready);
-			ready = 1'h1;
-			$display("MAIN_UPDATE end %h",counter);
-			$display("MAIN_UPDATE end %h",ready);
-			 end
-        FINAL_UPDATE:
-          begin
-			 $display("FINAL_UPDATE %h",counter);
-			ready = 1'h0;
+			end
+			
+      
+			 $display("FINAL_UPDATE");
           temp = SubBytes(block_new);
 			 temp = ShiftRow(temp);
 			 key_old = key_new;
-			 key_new = aes_key(key_old,counter);
+			 key_new = aes_key(key_old,4'd10);
 			 temp = AddRoundKey(temp,key_new);
 			 block_old = block_new;
 			 block_new = temp;
 			 Result = block_new;
-			 update_type = NO_UPDATE;
-			ready = 1'h1;
-          end
-        default:
-          begin
-          end
-      endcase // case (update_type)
     end // round_logic
 endmodule

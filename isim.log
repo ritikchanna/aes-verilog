@@ -1,6 +1,5 @@
 ISim log file
 Running: /home/superuser/Workspace/Verilog/AES/AES/TestBench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/superuser/Workspace/Verilog/AES/AES/TestBench_isim_beh.wdb 
-INFO: There is another simulation running in the same directory. Using database file name isim1.wdb.
 ISim P.20131013 (signature 0xfbc00daa)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
@@ -12,27 +11,99 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 @*
-Block is 00000000000000000000000000000001
+Block is 5587304b0f70f236973119c44f0bae3f
 INIT_UPDATE
-block_old 00000000000000000000000000000001
-AddRoundKey state is 00000000000000000000000000000001, Roundkey is 00000000000000000000000000000008
-output is 00000000000000000000000000000009
-State after INIT_UPDATE is 00000000000000000000000000000009
-Ready changed
-Next before 0
-Next after 1
-@*
-Block is 00000000000000000000000000000001
-MAIN_UPDATE 1
+AddRoundKey state is 5587304b0f70f236973119c44f0bae3f, Roundkey is 2dbeaa39859dcf76681ed7d5a1434aad
+output is 78399a728aed3d40ff2fce11ee48e492
+State after INIT_UPDATE is 78399a728aed3d40ff2fce11ee48e492
+MAIN_UPDATE 00000001
 SubBytes
 ShiftRow
 mixcolumn
-aes_key key=00000000000000000000000000000008 round=1
+aes_key key=2dbeaa39859dcf76681ed7d5a1434aad round=1 RCON=01
 SubBytes
-aes_key 6263306362633063626330636263306b
-AddRoundKey state is 0101c5a7636363636363636363636363, Roundkey is 6263306362633063626330636263306b
-output is 6362f5c4010053000100530001005308
-MAIN_UPDATE end 0
-MAIN_UPDATE end 2
-MAIN_UPDATE end 1
+aes_key 36683f0bb3f5f07ddbeb27a87aa86d05
+AddRoundKey state is 58df359feaaf797e6b6834c2c3e7e952, Roundkey is 36683f0bb3f5f07ddbeb27a87aa86d05
+output is 6eb70a94595a8903b083136ab94f8457
+MAIN_UPDATE 00000002
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=36683f0bb3f5f07ddbeb27a87aa86d05 round=2 RCON=02
+SubBytes
+aes_key f65454d145a1a4ac9e4a8304e4e2ee01
+AddRoundKey state is da2436cfdfcbffb15e262027e9efacf0, Roundkey is f65454d145a1a4ac9e4a8304e4e2ee01
+output is 2c70621e9a6a5b1dc06ca3230d0d42f1
+MAIN_UPDATE 00000003
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=f65454d145a1a4ac9e4a8304e4e2ee01 round=3 RCON=04
+SubBytes
+aes_key 6a7c28b82fdd8c14b1970f105575e111
+AddRoundKey state is 4fca9fc2c51e264b034ed5fb59189e46, Roundkey is 6a7c28b82fdd8c14b1970f105575e111
+output is 25b6b77aeac3aa5fb2d9daeb0c6d7f57
+MAIN_UPDATE 00000004
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=6a7c28b82fdd8c14b1970f105575e111 round=4 RCON=08
+SubBytes
+aes_key ff84aa44d059265061ce294034bbc851
+AddRoundKey state is 00c1528e425a78da4c6008497064d332, Roundkey is ff84aa44d059265061ce294034bbc851
+output is ff45f8ca92035e8a2dae210944df1b63
+MAIN_UPDATE 00000005
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=ff84aa44d059265061ce294034bbc851 round=5 RCON=10
+SubBytes
+aes_key 056c7b5cd5355d0cb4fb744c8040bc1d
+AddRoundKey state is a7079a51720272722d424650dd2ec619, Roundkey is 056c7b5cd5355d0cb4fb744c8040bc1d
+output is a26be10da7372f7e99b9321c5d6e7a04
+MAIN_UPDATE 00000006
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=056c7b5cd5355d0cb4fb744c8040bc1d round=6 RCON=20
+SubBytes
+aes_key 2c09df91f93c829d4dc7f6d1cd874acc
+AddRoundKey state is 1082eb084f52c7dd762b94b39011a69d, Roundkey is 2c09df91f93c829d4dc7f6d1cd874acc
+output is 3c8b3499b66e45403bec62625d96ec51
+MAIN_UPDATE 00000007
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=2c09df91f93c829d4dc7f6d1cd874acc round=7 RCON=40
+SubBytes
+aes_key 7bdf942c82e316b1cf24e06002a3aaac
+AddRoundKey state is 0cfa53aaf56e2e1565f859a71b2e48c8, Roundkey is 7bdf942c82e316b1cf24e06002a3aaac
+output is 7725c786778d38a4aadcb9c7198de264
+MAIN_UPDATE 00000008
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=7bdf942c82e316b1cf24e06002a3aaac round=8 RCON=80
+SubBytes
+aes_key f173055b739013eabcb4f38abe175926
+AddRoundKey state is 03f6c189bc1594922b0ebde63365b4c8, Roundkey is f173055b739013eabcb4f38abe175926
+output is f285c4d2cf85877897ba4e6c8d72edee
+MAIN_UPDATE 00000009
+SubBytes
+ShiftRow
+mixcolumn
+aes_key key=f173055b739013eabcb4f38abe175926 round=9 RCON=1b
+SubBytes
+aes_key 1ab8f2f56928e11fd59c12956b8b4bb3
+AddRoundKey state is ace53868e83310556b902fbc5f0114c7, Roundkey is 1ab8f2f56928e11fd59c12956b8b4bb3
+output is b65dca9d811bf14abe0c3d29348a5f74
+FINAL_UPDATE
+SubBytes
+ShiftRow
+aes_key key=1ab8f2f56928e11fd59c12956b8b4bb3 round=a RCON=36
+SubBytes
+aes_key 110b9f8a78237e95adbf6c00c63427b3
+AddRoundKey state is 4eaf27920cfecf5eae7e74d6184ca1a5, Roundkey is 110b9f8a78237e95adbf6c00c63427b3
+output is 5fa4b81874ddb1cb03c118d6de788616
 Finished circuit initialization process.
+# exit 0
