@@ -8,14 +8,15 @@ Analyzing Verilog file "/home/superuser/Workspace/Verilog/AES/AES/TestBench.v" i
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 94840 KB
-Fuse CPU Usage: 2430 ms
+Fuse Memory Usage: 94860 KB
+Fuse CPU Usage: 1810 ms
 Compiling module Encrypt
 Compiling module TestBench
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 2 sub-compilation(s) to finish...
 Compiled 3 Verilog Units
 Built simulation executable /home/superuser/Workspace/Verilog/AES/AES/TestBench_isim_beh.exe
-Fuse Memory Usage: 656488 KB
-Fuse CPU Usage: 2490 ms
-GCC CPU Usage: 1300 ms
+Fuse Memory Usage: 656812 KB
+Fuse CPU Usage: 1860 ms
+GCC CPU Usage: 1100 ms

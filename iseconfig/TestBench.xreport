@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-03-24T08:58:17</DateModified>
+  <DateModified>2018-03-25T19:10:17</DateModified>
   <ModuleName>TestBench</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2018-03-24T13:44:05</SummaryTimeStamp>
   <SavedFilePath>/home/superuser/Workspace/Verilog/AES/AES/iseconfig/TestBench.xreport</SavedFilePath>
   <ImplementationReportsDirectory>/home/superuser/Workspace/Verilog/AES/AES/</ImplementationReportsDirectory>
-  <DateInitialized>2018-02-02T09:49:24</DateInitialized>
+  <DateInitialized>2018-03-24T12:52:13</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>

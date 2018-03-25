@@ -1,6 +1,6 @@
 ISim log file
 Running: /home/superuser/Workspace/Verilog/AES/AES/TestBench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/superuser/Workspace/Verilog/AES/AES/TestBench_isim_beh.wdb 
-INFO: There is another simulation running in the same directory. Using database file name isim2.wdb.
+INFO: There is another simulation running in the same directory. Using database file name isim1.wdb.
 ISim P.20131013 (signature 0xfbc00daa)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
@@ -12,25 +12,27 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 @*
+Block is 00000000000000000000000000000001
 INIT_UPDATE
-AddRoundKey
+block_old 00000000000000000000000000000001
+AddRoundKey state is 00000000000000000000000000000001, Roundkey is 00000000000000000000000000000008
+output is 00000000000000000000000000000009
+State after INIT_UPDATE is 00000000000000000000000000000009
+Ready changed
+Next before 0
+Next after 1
 @*
+Block is 00000000000000000000000000000001
 MAIN_UPDATE 1
 SubBytes
 ShiftRow
 mixcolumn
+aes_key key=00000000000000000000000000000008 round=1
+SubBytes
+aes_key 6263306362633063626330636263306b
+AddRoundKey state is 0101c5a7636363636363636363636363, Roundkey is 6263306362633063626330636263306b
+output is 6362f5c4010053000100530001005308
+MAIN_UPDATE end 0
+MAIN_UPDATE end 2
+MAIN_UPDATE end 1
 Finished circuit initialization process.
-@*
-MAIN_UPDATE 2
-SubBytes
-ShiftRow
-mixcolumn
-@*
-MAIN_UPDATE 3
-SubBytes
-ShiftRow
-mixcolumn
-@*
-FINAL_UPDATE
-SubBytes
-ShiftRow
