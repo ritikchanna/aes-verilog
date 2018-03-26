@@ -4,11 +4,11 @@
 	reg [127:0] TestState;
 	reg [127:0] TestKey;
 	wire [127:0] TestResult;
-	Encrypt e_module(TestState,TestKey,TestResult);
+	Decrypt e_module(TestState,TestKey,TestResult);
 	initial
 	begin
-	TestState=127'h5587304b0f70f236973119c44f0bae3f;
-	TestKey=128'h2dbeaa39859dcf76681ed7d5a1434aad;
+	TestState=127'h12edf70abe44d3596c48a1da8fc224d7;
+	TestKey=128'h000102030405060708090a0b0c0d0e0f;
 	//assign led = TestState[127];
 	end
 	endmodule

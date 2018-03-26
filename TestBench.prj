@@ -1,2 +1,2 @@
-verilog work "Encrypt.v"
+verilog work "Decrypt.v"
 verilog work "TestBench.v"

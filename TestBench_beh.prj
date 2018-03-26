@@ -1,3 +1,3 @@
-verilog work "Encrypt.v"
+verilog work "Decrypt.v"
 verilog work "TestBench.v"
 verilog work "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
