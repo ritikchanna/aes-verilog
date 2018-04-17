@@ -236,7 +236,6 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="TestBench.bld"/>
       <outfile xil_pn:name="TestBench.ngd"/>
       <outfile xil_pn:name="TestBench_ngdbuild.xrpt"/>
@@ -246,7 +245,6 @@
     <transform xil_pn:end_ts="1522001034" xil_pn:in_ck="2221867544513142105" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="-4775573358763839746" xil_pn:start_ts="1522001025">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="TestBench.pcf"/>
@@ -263,7 +261,6 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="TestBench.ncd"/>
       <outfile xil_pn:name="TestBench.pad"/>
       <outfile xil_pn:name="TestBench.par"/>
@@ -278,7 +275,6 @@
     <transform xil_pn:end_ts="1522001051" xil_pn:in_ck="-2184867986750692381" xil_pn:name="TRANEXT_bitFile_spartan3" xil_pn:prop_ck="-2672950586390118423" xil_pn:start_ts="1522001044">
       <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="TestBench.bgn"/>
       <outfile xil_pn:name="TestBench.bit"/>
       <outfile xil_pn:name="TestBench.drc"/>
@@ -291,7 +287,6 @@
     <transform xil_pn:end_ts="1522001044" xil_pn:in_ck="2777722173709161449" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1522001040">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="TestBench.twr"/>
       <outfile xil_pn:name="TestBench.twx"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>

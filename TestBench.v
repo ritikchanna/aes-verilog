@@ -1,5 +1,10 @@
 	`timescale 1ns / 1ps
-	module TestBench(input one_bit);
+	module TestBench(
+	input wire clk, 
+output reg lcd_rw,
+output reg lcd_e,
+output reg lcd_rs,
+output reg [7:0] data);
 	
 	reg [127:0] TestState;
 	reg [127:0] TestKey;
